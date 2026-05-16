@@ -1,0 +1,487 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Paquetes Fotograf&iacute;a &middot; 15 A&ntilde;os &middot; Bariloche</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #faf8f4;
+    --card: #ffffff;
+    --gold: #a87828;
+    --gold-dim: rgba(168,120,40,0.08);
+    --gold-line: rgba(168,120,40,0.2);
+    --cream: #1a1612;
+    --cream-dim: rgba(26,22,18,0.72);
+    --muted: rgba(26,22,18,0.4);
+    --pine: #2d5446;
+    --pine-light: #3a6b5a;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #0f0e0c;
+      --card: #1c1a16;
+      --gold: #d4a853;
+      --gold-dim: rgba(212,168,83,0.13);
+      --gold-line: rgba(212,168,83,0.22);
+      --cream: #f0ead8;
+      --cream-dim: rgba(240,234,216,0.65);
+      --muted: rgba(240,234,216,0.35);
+      --pine: #4d8c78;
+      --pine-light: #5fa990;
+    }
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background: var(--bg);
+    color: var(--cream);
+    font-family: 'Jost', sans-serif;
+    font-weight: 300;
+    min-height: 100vh;
+  }
+
+  /* Background texture */
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image:
+      radial-gradient(ellipse 80% 60% at 50% -10%, rgba(168,120,40,0.05) 0%, transparent 70%),
+      radial-gradient(ellipse 60% 40% at 80% 100%, rgba(45,84,70,0.04) 0%, transparent 60%);
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  .wrap {
+    position: relative;
+    z-index: 1;
+    max-width: 680px;
+    margin: 0 auto;
+    padding: 0 24px 64px;
+  }
+
+  /* HEADER */
+  .header {
+    padding: 56px 0 44px;
+    text-align: center;
+    border-bottom: 1px solid var(--gold-line);
+  }
+
+  .header-eyebrow {
+    font-family: 'Jost', sans-serif;
+    font-size: 10px;
+    letter-spacing: 5px;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 22px;
+    font-weight: 400;
+  }
+
+  .header h1 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(38px, 10vw, 62px);
+    font-weight: 300;
+    line-height: 1.05;
+    color: var(--cream);
+    margin-bottom: 6px;
+  }
+
+  .header h1 em {
+    font-style: italic;
+    color: var(--gold);
+  }
+
+  .header-location {
+    font-size: 12px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-top: 18px;
+    font-weight: 400;
+  }
+
+  /* INTRO NOTE */
+  .intro-note {
+    margin: 36px 0 44px;
+    padding: 22px 26px;
+    border-left: 2px solid var(--gold);
+    background: var(--gold-dim);
+    border-radius: 0 4px 4px 0;
+  }
+
+  .intro-note p {
+    font-size: 14px;
+    color: var(--cream-dim);
+    line-height: 1.7;
+  }
+
+  .intro-note strong {
+    color: var(--cream);
+    font-weight: 400;
+  }
+
+  /* PACKAGES */
+  .pkg {
+    background: var(--card);
+    border: 1px solid var(--gold-line);
+    border-radius: 6px;
+    margin-bottom: 20px;
+    overflow: hidden;
+    transition: border-color 0.3s;
+  }
+
+  .pkg:hover {
+    border-color: rgba(212,168,83,0.5);
+  }
+
+  .pkg.featured {
+    border-color: var(--gold);
+    position: relative;
+  }
+
+  .pkg-badge {
+    position: absolute;
+    top: 0; right: 20px;
+    background: var(--gold);
+    color: var(--bg);
+    font-size: 9px;
+    font-weight: 500;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    padding: 5px 12px;
+    border-radius: 0 0 6px 6px;
+  }
+
+  .pkg-top {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    padding: 28px 28px 22px;
+    gap: 16px;
+    border-bottom: 1px solid var(--gold-line);
+  }
+
+  .pkg-name-block {}
+
+  .pkg-num {
+    font-size: 10px;
+    letter-spacing: 3px;
+    color: var(--gold);
+    text-transform: uppercase;
+    margin-bottom: 6px;
+    font-weight: 400;
+  }
+
+  .pkg-name {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 32px;
+    font-weight: 300;
+    color: var(--cream);
+    line-height: 1;
+  }
+
+  .pkg-tagline {
+    font-size: 12px;
+    color: var(--muted);
+    margin-top: 6px;
+    font-weight: 300;
+  }
+
+  .pkg-price-block {
+    text-align: right;
+    flex-shrink: 0;
+  }
+
+  .pkg-price {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 38px;
+    font-weight: 300;
+    color: var(--pine);
+    line-height: 1;
+    white-space: nowrap;
+  }
+
+  .pkg-price-unit {
+    font-size: 11px;
+    color: var(--muted);
+    margin-top: 4px;
+    letter-spacing: 1px;
+  }
+
+  .pkg-body {
+    padding: 22px 28px 26px;
+  }
+
+  .pkg-section-label {
+    font-size: 9px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 14px;
+    font-weight: 400;
+  }
+
+  .pkg-list {
+    list-style: none;
+  }
+
+  .pkg-list li {
+    display: flex;
+    gap: 12px;
+    align-items: flex-start;
+    font-size: 14px;
+    color: var(--cream-dim);
+    padding: 9px 0;
+    border-bottom: 1px solid rgba(212,168,83,0.08);
+    line-height: 1.4;
+  }
+
+  .pkg-list li:last-child {
+    border-bottom: none;
+  }
+
+  .pkg-list li .dot {
+    width: 5px;
+    height: 5px;
+    border-radius: 50%;
+    background: var(--gold);
+    flex-shrink: 0;
+    margin-top: 5px;
+    opacity: 0.7;
+  }
+
+  .pkg-list li strong {
+    color: var(--cream);
+    font-weight: 400;
+  }
+
+  /* ADDITIONALS */
+  .additionals {
+    margin-top: 40px;
+    padding-top: 28px;
+    border-top: 1px solid var(--gold-line);
+  }
+
+  .additionals-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 22px;
+    font-weight: 300;
+    color: var(--cream);
+    margin-bottom: 16px;
+    font-style: italic;
+  }
+
+  .add-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+  }
+
+  .add-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px 16px;
+    background: var(--card);
+    border: 1px solid var(--gold-line);
+    border-radius: 4px;
+    font-size: 13px;
+    gap: 8px;
+  }
+
+  .add-item span:first-child {
+    color: var(--cream-dim);
+  }
+
+  .add-item span:last-child {
+    color: var(--pine);
+    white-space: nowrap;
+    font-weight: 500;
+    font-size: 13px;
+  }
+
+  /* FOOTER NOTE */
+  .footer-note {
+    margin-top: 40px;
+    text-align: center;
+  }
+
+  .footer-note p {
+    font-size: 12px;
+    color: var(--muted);
+    line-height: 1.7;
+    margin-bottom: 4px;
+  }
+
+  .footer-note .contact-line {
+    display: inline-block;
+    margin-top: 20px;
+    padding: 14px 36px;
+    border: 1px solid var(--pine);
+    border-radius: 2px;
+    font-size: 12px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--pine);
+    font-weight: 400;
+    text-decoration: none;
+    transition: background 0.2s, color 0.2s;
+  }
+
+  .footer-note .contact-line:hover {
+    background: var(--pine);
+    color: #fff;
+  }
+
+  @media (max-width: 500px) {
+    .pkg-top { flex-direction: column; gap: 12px; }
+    .pkg-price-block { text-align: left; }
+    .add-grid { grid-template-columns: 1fr; }
+    .wrap { padding: 0 16px 48px; }
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <!-- HEADER -->
+  <div class="header">
+    <p class="header-eyebrow">Sof&iacute;a Alvarez Camelli &middot; Fotograf&iacute;a</p>
+    <h1>Fiestas de<br><em>15 a&ntilde;os</em></h1>
+    <p class="header-location">San Carlos de Bariloche &middot; Patagonia</p>
+  </div>
+
+  <!-- INTRO -->
+  <div class="intro-note">
+    <p>Hola &#128075; Soy <strong>Sof&iacute;a Alvarez Camelli</strong>, fot&oacute;grafa en Bariloche. Te comparto mis paquetes de fotograf&iacute;a para tu festejo. Todos incluyen <strong>entrega digital en alta resoluci&oacute;n</strong> y una sesi&oacute;n de coordinaci&oacute;n previa para que ese d&iacute;a todo salga perfecto.<br><br>
+    Cualquier duda, escribime y armamos algo a medida para vos.</p>
+  </div>
+
+  <!-- PACK 1 -->
+  <div class="pkg">
+    <div class="pkg-top">
+      <div class="pkg-name-block">
+        <p class="pkg-num">Paquete 01</p>
+        <div class="pkg-name">Lago</div>
+        <p class="pkg-tagline">Cobertura esencial &middot; Ideal para fiestas &iacute;ntimas</p>
+      </div>
+      <div class="pkg-price-block">
+        <div class="pkg-price">$180.000</div>
+        <p class="pkg-price-unit">ARS &middot; Precio de lanzamiento</p>
+      </div>
+    </div>
+    <div class="pkg-body">
+      <p class="pkg-section-label">Incluye</p>
+      <ul class="pkg-list">
+        <li><span class="dot"></span><span>Cobertura fotogr&aacute;fica de la fiesta <strong>hasta 4 horas</strong></span></li>
+        <li><span class="dot"></span><span>Entre <strong>150 y 200 fotos</strong> editadas en alta resoluci&oacute;n</span></li>
+        <li><span class="dot"></span><span>Entrega mediante <strong>link de descarga</strong> en alta resoluci&oacute;n</span></li>
+        <li><span class="dot"></span><span>Selecci&oacute;n y edici&oacute;n entregada en <strong>7 a 10 d&iacute;as h&aacute;biles</strong></span></li>
+        <li><span class="dot"></span><span>Coordinaci&oacute;n previa por WhatsApp</span></li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- PACK 2 -->
+  <div class="pkg featured">
+    <div class="pkg-badge">&#11088; M&aacute;s elegido</div>
+    <div class="pkg-top">
+      <div class="pkg-name-block">
+        <p class="pkg-num">Paquete 02</p>
+        <div class="pkg-name">Cerro</div>
+        <p class="pkg-tagline">Completo con sesi&oacute;n outdoor &middot; El m&aacute;s solicitado</p>
+      </div>
+      <div class="pkg-price-block">
+        <div class="pkg-price">$320.000</div>
+        <p class="pkg-price-unit">ARS &middot; Mejor relaci&oacute;n valor/precio</p>
+      </div>
+    </div>
+    <div class="pkg-body">
+      <p class="pkg-section-label">Incluye</p>
+      <ul class="pkg-list">
+        <li><span class="dot"></span><span>Cobertura fotogr&aacute;fica completa de la fiesta <strong>hasta 6 horas</strong></span></li>
+        <li><span class="dot"></span><span>Entre <strong>250 y 350 fotos</strong> editadas en alta resoluci&oacute;n</span></li>
+        <li><span class="dot"></span><span><strong>Sesi&oacute;n pre-fiesta en exteriores</strong> (1 a 1,5 hs &middot; lago, bosque o donde elijas)</span></li>
+        <li><span class="dot"></span><span><strong>Entrega digital</strong> completa por link de descarga en alta resoluci&oacute;n</span></li>
+        <li><span class="dot"></span><span><strong>5 fotos con retoque avanzado</strong> (piel, luz y ambiente)</span></li>
+        <li><span class="dot"></span><span>Entrega en <strong>10 a 15 d&iacute;as h&aacute;biles</strong></span></li>
+        <li><span class="dot"></span><span>Reuni&oacute;n previa presencial o por videollamada</span></li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- PACK 3 -->
+  <div class="pkg">
+    <div class="pkg-top">
+      <div class="pkg-name-block">
+        <p class="pkg-num">Paquete 03</p>
+        <div class="pkg-name">Patagonia</div>
+        <p class="pkg-tagline">Experiencia completa &middot; El recuerdo total</p>
+      </div>
+      <div class="pkg-price-block">
+        <div class="pkg-price">$500.000</div>
+        <p class="pkg-price-unit">ARS &middot; Paquete premium</p>
+      </div>
+    </div>
+    <div class="pkg-body">
+      <p class="pkg-section-label">Incluye</p>
+      <ul class="pkg-list">
+        <li><span class="dot"></span><span>Cobertura fotogr&aacute;fica completa <strong>hasta 8 horas</strong> (o toda la noche)</span></li>
+        <li><span class="dot"></span><span>M&aacute;s de <strong>400 fotos</strong> editadas en alta resoluci&oacute;n</span></li>
+        <li><span class="dot"></span><span><strong>Sesi&oacute;n pre-fiesta en exteriores</strong> (2 horas &middot; 2 locaciones a elecci&oacute;n)</span></li>
+        <li><span class="dot"></span><span><strong>Getting Ready</strong>: fotos mientras te prepar&aacute;s para el gran d&iacute;a</span></li>
+        <li><span class="dot"></span><span><strong>10 fotos con retoque premium</strong> individual</span></li>
+        <li><span class="dot"></span><span><strong>Entrega digital</strong> completa por link de descarga en alta resoluci&oacute;n</span></li>
+        <li><span class="dot"></span><span><strong>Video slideshow</strong> / clip de fotos para proyectar en el sal&oacute;n</span></li>
+        <li><span class="dot"></span><span>Entrega en <strong>15 a 20 d&iacute;as h&aacute;biles</strong></span></li>
+        <li><span class="dot"></span><span>Reuni&oacute;n previa + acompa&ntilde;amiento total durante la organizaci&oacute;n</span></li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- ADICIONALES -->
+  <div class="additionals">
+    <div class="additionals-title">Servicios adicionales</div>
+    <div class="add-grid">
+      <div class="add-item">
+        <span>Hora adicional de cobertura</span>
+        <span>$30.000</span>
+      </div>
+      <div class="add-item">
+        <span>Retoque extra (por foto)</span>
+        <span>$4.000</span>
+      </div>
+      <div class="add-item">
+        <span>Video slideshow (suelto)</span>
+        <span>$40.000</span>
+      </div>
+      <div class="add-item">
+        <span>Vi&aacute;ticos fuera de Bariloche</span>
+        <span>A consultar</span>
+      </div>
+      <div class="add-item">
+        <span>Getting Ready (suelto)</span>
+        <span>$60.000</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <div class="footer-note">
+    <p>Los precios est&aacute;n expresados en pesos argentinos y se congelan al momento de abonar la se&ntilde;a.</p>
+    <p>Se solicita un <strong style="color:var(--cream-dim)">40% de anticipo</strong> para reservar la fecha.</p>
+    <br>
+    <a class="contact-line" href="https://wa.me/542944321290?text=Hola%20Sof%C3%ADa%2C%20vi%20tus%20paquetes%20de%20fotograf%C3%ADa%20para%2015%20a%C3%B1os%20y%20me%20gustar%C3%ADa%20consultar%20%F0%9F%93%B7" target="_blank">
+      &#128242; Escribime por WhatsApp
+    </a>
+    <p style="margin-top:14px; font-size:11px;">Sof&iacute;a Alvarez Camelli &middot; +54 9 2944 321290</p>
+  </div>
+
+</div>
+</body>
+</html>
